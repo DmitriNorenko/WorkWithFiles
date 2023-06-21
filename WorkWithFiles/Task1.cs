@@ -14,7 +14,7 @@ namespace WorkWithFiles
         {
             try
             {
-                string str = "/Users/dima/tests";
+                string str = "/Users/dima/tests/";
                 DirectoryInfo dirInfo = new DirectoryInfo(str);
 
                 if (dirInfo.Exists)
