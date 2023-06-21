@@ -26,7 +26,6 @@ namespace WorkWithFiles
                     Console.WriteLine("Было освобождено: " + i);
                     Console.WriteLine("После удаления: " + ShowFolders(dirInfo.Parent));
                 }
-
                 Console.ReadKey();
             }
             catch (Exception ex)
