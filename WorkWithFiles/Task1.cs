@@ -21,6 +21,7 @@ namespace WorkWithFiles
                     directoryInfo.Delete(true);
                     Console.WriteLine("Старые файлы и папки удалены.");
                 }
+                Console.WriteLine(ShowFolders(directoryInfo));
                 Console.ReadKey();
             }
             catch (Exception ex)
