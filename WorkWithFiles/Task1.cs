@@ -14,16 +14,17 @@ namespace WorkWithFiles
         {
             try
             {
-                string str = "/Users/dima/tests/";
+                string str = "/Tests/f";
                 DirectoryInfo dirInfo = new DirectoryInfo(str);
 
                 if (dirInfo.Exists)
                 {
-                    Console.WriteLine("До удаления: " + ShowFolders(dirInfo));
+                    var i = ShowFolders(dirInfo);
+                    Console.WriteLine("До удаления: " + i );
                     dirInfo.Delete(true);
                     Console.WriteLine("Старые файлы и папки удалены.");
-                    Console.WriteLine("Освобождено места: " + ShowFolders(dirInfo));
-                    Console.WriteLine("После удаления: " + ShowFolders(dirInfo));
+                    Console.WriteLine("Было освобождено: " + i);
+                    Console.WriteLine("После удаления: " + ShowFolders(dirInfo.Root));
                 }
 
                 Console.ReadKey();
