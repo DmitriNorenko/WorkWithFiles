@@ -24,7 +24,7 @@ namespace WorkWithFiles
                     dirInfo.Delete(true);
                     Console.WriteLine("Старые файлы и папки удалены.");
                     Console.WriteLine("Было освобождено: " + i);
-                    Console.WriteLine("После удаления: " + ShowFolders(dirInfo.Root));
+                    Console.WriteLine("После удаления: " + ShowFolders(dirInfo.Parent));
                 }
 
                 Console.ReadKey();
