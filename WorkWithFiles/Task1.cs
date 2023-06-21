@@ -14,20 +14,24 @@ namespace WorkWithFiles
         {
             try
             {
-                string str = "/Tests";
-                DirectoryInfo directoryInfo = new DirectoryInfo(str);
+                string str = "/Users/dima/tests";
+                DirectoryInfo dirInfo = new DirectoryInfo(str);
 
-                if (directoryInfo.Exists)
+                if (dirInfo.Exists)
                 {
-                    directoryInfo.Delete(true);
+                    Console.WriteLine("До удаления: " + ShowFolders(dirInfo));
+                    dirInfo.Delete(true);
                     Console.WriteLine("Старые файлы и папки удалены.");
+                    Console.WriteLine("Освобождено места: " + ShowFolders(dirInfo));
+                    Console.WriteLine("После удаления: " + ShowFolders(dirInfo));
                 }
-                Console.WriteLine(ShowFolders(directoryInfo));
+
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"У вас нет доступа.{ex}");
+                Console.ReadKey();
             }
         }
     }
