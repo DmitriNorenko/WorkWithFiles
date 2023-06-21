@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static WorkWithFiles.Task2;
+using static FinalTask.Task4;
 
 namespace WorkWithFiles
 {
@@ -26,6 +27,8 @@ namespace WorkWithFiles
                     Console.WriteLine("Было освобождено: " + i);
                     Console.WriteLine("После удаления: " + ShowFolders(dirInfo.Parent));
                 }
+                else { Console.WriteLine("Такой папки нет."); }
+                ReadValues();
                 Console.ReadKey();
             }
             catch (Exception ex)
