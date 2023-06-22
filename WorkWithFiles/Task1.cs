@@ -17,19 +17,24 @@ namespace WorkWithFiles
             {
                 string str = "/Tests/f";
                 DirectoryInfo dirInfo = new DirectoryInfo(str);
-
-                if (dirInfo.Exists)
+                var dtNow = DateTime.Now;
+                var delta = dtNow - dirInfo.CreationTime;
+                if (delta > new TimeSpan(0, 30, 0))
                 {
-                    var i = ShowFolders(dirInfo);
-                    Console.WriteLine("До удаления: " + i );
-                    dirInfo.Delete(true);
-                    Console.WriteLine("Старые файлы и папки удалены.");
-                    Console.WriteLine("Было освобождено: " + i);
-                    Console.WriteLine("После удаления: " + ShowFolders(dirInfo.Parent));
+                    if (dirInfo.Exists)
+                    {
+                        var i = ShowFolders(dirInfo);
+                        Console.WriteLine("До удаления: " + i);
+                        dirInfo.Delete(true);
+                        Console.WriteLine("Старые файлы и папки удалены.");
+                        Console.WriteLine("Было освобождено: " + i);
+                        Console.WriteLine("После удаления: " + ShowFolders(dirInfo.Parent));
+                    }
+                    else { Console.WriteLine("Такой папки нет."); }
+
+                    Console.ReadKey();
                 }
-                else { Console.WriteLine("Такой папки нет."); }
-                ReadValues();
-                Console.ReadKey();
+                ReadValue();
             }
             catch (Exception ex)
             {

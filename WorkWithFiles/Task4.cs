@@ -2,34 +2,34 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FinalTask
 {
+    [Serializable]
     internal class Task4
     {
-        static string SettingsFileName = "/Users/dima/Desktop/Students.dat";
-        public static void ReadValues()
+        public string Name { get; set; }
+        public string Group { get; set; }
+
+
+        public Task4(string name, string group, DateTime date)
         {
-            string Name;
-            string Group;
-            DateTime DateOfBirth;
+            Name = name;
+            Group = group;
 
-            if (File.Exists(SettingsFileName))
-            {
+        }
 
-                using (BinaryReader reader = new BinaryReader(File.Open(SettingsFileName, FileMode.Open)))
-                {
-                    Name = reader.ReadString();
-                    Group = reader.ReadString();
-                    DateOfBirth = Convert.ToDateTime(reader.ReadString());
-                }
-                Console.WriteLine(Name);
-                Console.WriteLine(Group);
-                Console.WriteLine(DateOfBirth);
-            }
-           
+        static string FileName = "/Users/dima/Desktop/Students.dat";
+        public static void ReadValue()
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            var fs = new FileStream(FileName, FileMode.OpenOrCreate);
+            var students = (Task4)bf.Deserialize(fs);
+            Console.WriteLine(" Имя: {0} \n Группа: {1} \n Дата: {2}", students.Name, students.Group);
         }
     }
 }
